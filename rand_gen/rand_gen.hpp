@@ -35,4 +35,5 @@ vector< double > multi_uniGen( int n, double min, double max );
 // Generate a multiple number of normal distributed numbers
 vector< double > multi_normGen( int n, double mu, double sigma );
 
+
 #endif /* RAND_GEN_HPP_ */
