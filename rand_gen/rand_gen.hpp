@@ -26,10 +26,8 @@ using namespace std;
 // Generate number using an uniform distribution
 double uni_gen( double min, double max );
 
-
 // Generate number using a normal distribution
 double norm_gen( double mu, double sigma );
-
 
 // Generate a multiple number of uniformly distributed numbers
 vector< double > multi_uniGen( int n, double min, double max );
