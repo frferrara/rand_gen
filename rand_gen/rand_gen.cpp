@@ -10,7 +10,8 @@
 
 
 // Generate number using an uniform distribution
-double uni_gen( double min, double max )
+double uni_gen( double min, \
+				double max )
 {
 #if DEBUG__UNI_GEN
 	cout << "min: " << min << endl;
@@ -36,7 +37,8 @@ double uni_gen( double min, double max )
 }
 
 // Generate number using a normal distribution
-double norm_gen( double mu, double sigma )
+double norm_gen( double mu, \
+				 double sigma )
 {
 #if DEBUG__NORM_GEN
 	cout << "mu: " << mu << endl;
@@ -75,7 +77,9 @@ double norm_gen( double mu, double sigma )
 }
 
 // Generate a multiple number of uniformly distributed numbers
-vector< double > multi_uniGen( int n, double min, double max )
+vector< double > multi_uniGen( int n, \
+							   double min, \
+							   double max )
 {
 	// Initialize the random number generator
 	srand( ( unsigned int )time( 0 ) );
@@ -89,12 +93,42 @@ vector< double > multi_uniGen( int n, double min, double max )
 	return rand_nums;
 }
 
+// Generate a multiple number of uniformly distributed numbers without initialization
+vector< double > multi_uniGen_noInit( int n, \
+									  double min, \
+									  double max )
+{
+	vector< double > rand_nums;
+
+	for ( int i = 0; i < n; i++ )
+	{
+		rand_nums.push_back( uni_gen( min, max ) );
+	}
+	return rand_nums;
+}
+
 // Generate a multiple number of normal distributed numbers
-vector< double > multi_normGen( int n, double mu, double sigma )
+vector< double > multi_normGen( int n, \
+								double mu, \
+								double sigma )
 {
 	// Initialize the random number generator
 	srand( ( unsigned int )time( 0 ) );
 
+	vector< double > rand_nums;
+
+	for ( int i = 0; i < n; i++ )
+	{
+		rand_nums.push_back( norm_gen( mu, sigma ) );
+	}
+	return rand_nums;
+}
+
+// Generate a multiple number of normal distributed numbers without initialization
+vector< double > multi_normGen_noInit( int n, \
+									   double mu, \
+									   double sigma )
+{
 	vector< double > rand_nums;
 
 	for ( int i = 0; i < n; i++ )

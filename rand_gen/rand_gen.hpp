@@ -9,6 +9,7 @@
 #define RAND_GEN_HPP_
 
 
+// STL
 #include <iostream>
 #include <cstdlib>
 #include <cmath>
@@ -24,16 +25,32 @@ using namespace std;
 
 
 // Generate number using an uniform distribution
-double uni_gen( double min, double max );
+double uni_gen( double min, \
+				double max );
 
 // Generate number using a normal distribution
-double norm_gen( double mu, double sigma );
+double norm_gen( double mu, \
+				 double sigma );
 
 // Generate a multiple number of uniformly distributed numbers
-vector< double > multi_uniGen( int n, double min, double max );
+vector< double > multi_uniGen( int n, \
+							   double min, \
+							   double max );
+
+// Generate a multiple number of uniformly distributed numbers without initialization
+vector< double > multi_uniGen_noInit( int n, \
+									  double min, \
+									  double max );
 
 // Generate a multiple number of normal distributed numbers
-vector< double > multi_normGen( int n, double mu, double sigma );
+vector< double > multi_normGen( int n, \
+								double mu, \
+								double sigma );
+
+// Generate a multiple number of normal distributed numbers without initialization
+vector< double > multi_normGen_noInit( int n, \
+									   double mu, \
+									   double sigma );
 
 
 #endif /* RAND_GEN_HPP_ */
