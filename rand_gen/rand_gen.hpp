@@ -1,8 +1,13 @@
-/*
- * rand_gen.hpp
+/** @file		rand_gen.hpp
  *
- *  Created on: Dec 17, 2011
- *      Author: ferraraf
+ *  @brief		Random number generator
+ *
+ *  @details	These functions generate random numbers. (Generator for normal
+ *  			distributed numbers taken from Wikipedia, http://en.wikipedia.org/wiki/Normal_distribution#Generating_values_from_normal_distribution)
+ *
+ * 	@author		Francesco Ferrara
+ *
+ * 	@date		03/19/2012
  */
 
 #ifndef RAND_GEN_HPP_
@@ -20,37 +25,33 @@
 using namespace std;
 
 
+/**	@brief	Set to 1 to print out values for debugging of the function uni_gen.
+ */
 #define DEBUG__UNI_GEN 0
+
+/**	@brief	Set to 1 to print out values for debugging of the function norm_gen.
+ */
 #define DEBUG__NORM_GEN 0
 
 
-// Generate number using an uniform distribution
+/**	@brief	Sample a number from an uniform distribution.
+ *
+ * 	@param min	Low boundary of uniform distribution
+ * 	@param max	High boundary of uniform distribution
+ *
+ * 	@return	Random uniformly generated number
+ */
 double uni_gen( double min, \
 				double max );
 
-// Generate number using a normal distribution
+/**	@brief	Sample a number from an normal distribution.
+ *
+ * 	@param mu		Mean of distribution
+ * 	@param sigma	Standard deviation of distribution
+ *
+ * 	@return	Random normal generated number
+ */
 double norm_gen( double mu, \
 				 double sigma );
-
-// Generate a multiple number of uniformly distributed numbers
-vector< double > multi_uniGen( int n, \
-							   double min, \
-							   double max );
-
-// Generate a multiple number of uniformly distributed numbers without initialization
-vector< double > multi_uniGen_noInit( int n, \
-									  double min, \
-									  double max );
-
-// Generate a multiple number of normal distributed numbers
-vector< double > multi_normGen( int n, \
-								double mu, \
-								double sigma );
-
-// Generate a multiple number of normal distributed numbers without initialization
-vector< double > multi_normGen_noInit( int n, \
-									   double mu, \
-									   double sigma );
-
 
 #endif /* RAND_GEN_HPP_ */

@@ -1,8 +1,13 @@
-/*
- * rand_gen.cpp
+/** @file		rand_gen.cpp
  *
- *  Created on: Dec 17, 2011
- *      Author: ferraraf
+ *  @brief		Random number generator
+ *
+ *  @details	These functions generate random numbers. (Generator for normal
+ *  			distributed numbers taken from Wikipedia, http://en.wikipedia.org/wiki/Normal_distribution#Generating_values_from_normal_distribution)
+ *
+ * 	@author		Francesco Ferrara
+ *
+ * 	@date		03/19/2012
  */
 
 
@@ -32,6 +37,7 @@ double uni_gen( double min, \
 
 	return rand_num;
 #else
+	// Scale and shift the C++ rand() function
 	return min + ( double )rand() / ( double )RAND_MAX * ( max - min );
 #endif
 }
@@ -46,6 +52,7 @@ double norm_gen( double mu, \
 	cout << "sigma: " << sigma << endl;
 #endif
 
+	// Procedure to generate values from a normal distribution (Wikipedia)
 	double U, V, S;
 
 	do
@@ -72,68 +79,7 @@ double norm_gen( double mu, \
 
 	return rand_num;
 #else
+	// Stretch and shift the distribution
 	return mu + sigma * ( U * sqrt( -2 * log( S ) / S ) );
 #endif
-}
-
-// Generate a multiple number of uniformly distributed numbers
-vector< double > multi_uniGen( int n, \
-							   double min, \
-							   double max )
-{
-	// Initialize the random number generator
-	srand( ( unsigned int )time( 0 ) );
-
-	vector< double > rand_nums;
-
-	for ( int i = 0; i < n; i++ )
-	{
-		rand_nums.push_back( uni_gen( min, max ) );
-	}
-	return rand_nums;
-}
-
-// Generate a multiple number of uniformly distributed numbers without initialization
-vector< double > multi_uniGen_noInit( int n, \
-									  double min, \
-									  double max )
-{
-	vector< double > rand_nums;
-
-	for ( int i = 0; i < n; i++ )
-	{
-		rand_nums.push_back( uni_gen( min, max ) );
-	}
-	return rand_nums;
-}
-
-// Generate a multiple number of normal distributed numbers
-vector< double > multi_normGen( int n, \
-								double mu, \
-								double sigma )
-{
-	// Initialize the random number generator
-	srand( ( unsigned int )time( 0 ) );
-
-	vector< double > rand_nums;
-
-	for ( int i = 0; i < n; i++ )
-	{
-		rand_nums.push_back( norm_gen( mu, sigma ) );
-	}
-	return rand_nums;
-}
-
-// Generate a multiple number of normal distributed numbers without initialization
-vector< double > multi_normGen_noInit( int n, \
-									   double mu, \
-									   double sigma )
-{
-	vector< double > rand_nums;
-
-	for ( int i = 0; i < n; i++ )
-	{
-		rand_nums.push_back( norm_gen( mu, sigma ) );
-	}
-	return rand_nums;
 }
